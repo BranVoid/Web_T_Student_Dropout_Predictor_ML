@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>WEB TESIS</title>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css'>
+    <link rel="stylesheet" href="../static/css/style.css">
+
+</head>
+
+
+<body>
+
+    <!-- MENÚ DE NAVEGACIÓN -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="https://images.vexels.com/content/142747/preview/diamond-squares-logo-e8fe66.png" alt="Logo" style="height: 40px;"></div>
+            <ul class="nav-links">
+              <li><a href="/">Inicio</a></li>
+              <li><a href="/dashboard">Dashboard</a></li>
+              <li><a href="/predictor">Predictor</a></li>
+              <li><a href="/material">Material</a></li>
+            </ul>
+            <!-- Botón de menú para pantallas pequeñas -->
+            <div class="hamburger" id="hamburger">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 id="title">Formulario de Diagnóstico Académico</h1>
+        <p id="description">Completa la siguiente información con veracidad.</p>
+
+        <form id="survey-form">
+
+            <!-- 1. DATOS GENERALES -->
+            <fieldset>
+                <legend>1. Datos Generales (Sociodemográficos)</legend>
+
+                <label for="gender">Sexo:</label>
+                <select id="gender" name="gender" required class="form-control"> 
+                  <option disabled selected>Seleccione</option>
+                  <option>Masculino</option>
+                  <option>Femenino</option>
+                </select>
+
+                <label for="age">Edad:</label>
+                <select id="age" name="age" required class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>16-20</option>
+                  <option>21-25</option>
+                  <option>26-30</option>
+                  <option>30+</option>
+                </select>
+
+                <label for="marital_status">Estado civil:</label>
+                <select id="marital_status" name="marital_status" required class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>Soltero/a</option>
+                  <option>Casado/a</option>
+                  <option>Divorciado/a</option>
+                  <option>Otro</option>
+                </select>
+
+                <label for="disability">¿Tienes alguna discapacidad?</label>
+                <select id="disability" name="disability" required class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>Sí</option>
+                  <option>No</option>
+                </select>
+
+                <label for="district">Distrito de residencia:</label>
+                <select id="district" name="district" required class="form-control">
+                  <option disabled selected>Seleccione su distrito</option>
+                  <option>Ate</option>
+                  <option>Barranco</option>
+                  <option>Breña</option>
+                  <option>Comas</option>
+                  <!-- ... otros distritos de Lima -->
+                </select>
+            </fieldset>
+
+            <!-- 2. CONTEXTO FAMILIAR -->
+            <fieldset>
+                <legend>2. Contexto Familiar</legend>
+
+                <label for="father_education">Nivel de estudios del padre:</label>
+                <select id="father_education" name="father_education" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>Primaria</option>
+                  <option>Secundaria</option>
+                  <option>Técnico</option>
+                  <option>Universitario</option>
+                  <option>Postgrado</option>
+                </select>
+
+                <label for="mother_education">Nivel de estudios de la madre:</label>
+                <select id="mother_education" name="mother_education" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>Primaria</option>
+                  <option>Secundaria</option>
+                  <option>Técnico</option>
+                  <option>Universitario</option>
+                  <option>Postgrado</option>
+                </select>
+
+                <label for="household_members">Número de personas en el hogar:</label>
+                <select id="household_members" name="household_members" required class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>1-3</option>
+                  <option>4-5</option>
+                  <option>6+</option>
+                </select>
+
+                <label for="economic_dependency">Dependencia económica:</label>
+                <select id="economic_dependency" name="economic_dependency" required class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>Totalmente dependiente</option>
+                  <option>Mayormente dependiente</option>
+                  <option>Parcialmente dependiente</option>
+                  <option>Mínimamente dependiente</option>
+                  <option>No dependo económicamente</option>
+                </select>
+            </fieldset>
+
+            <!-- 3. SALUD -->
+            <fieldset>
+                <legend>3. Salud</legend>
+
+                <label for="insurance_type">Tipo de seguro:</label>
+                <select id="insurance_type" name="insurance_type" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>EsSalud</option>
+                  <option>SIS</option>
+                  <option>Privado</option>
+                  <option>No tiene</option>
+                </select>
+
+                <label for="chronic_illness">¿Padece una enfermedad crónica o actual?</label>
+                <select id="chronic_illness" name="chronic_illness" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>Sí</option>
+                  <option>No</option>
+                </select>
+            </fieldset>
+
+            <!-- 4. INFORMACIÓN ACADÉMICA -->
+            <fieldset>
+                <legend>4. Información Académica</legend>
+
+                <label for="academic_program">Escuela profesional:</label>
+                <select id="academic_program" name="academic_program" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>Ingeniería de Software</option>
+                  <option>Ingeniería de Sistemas</option>
+                </select>
+
+                <label for="academic_cycle">¿A qué ciclo corresponde?</label>
+                <input type="number" id="academic_cycle" name="academic_cycle" min="1" max="10" class="form-control">
+
+                <label for="enrolled_courses">Número de cursos matriculados:</label>
+                <select id="enrolled_courses" name="enrolled_courses" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>3</option>
+                  <option>4-5</option>
+                  <option>6 o más</option>
+                </select>
+
+                <label for="last_semester_gpa">Promedio ponderado del último semestre:</label>
+                <select id="last_semester_gpa" name="last_semester_gpa" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>&lt;10</option>
+                  <option>10-12</option>
+                  <option>13-15</option>
+                  <option>16+</option>
+                </select>
+
+                <label for="failed_courses">¿Reprobó algún curso el último semestre?</label>
+                <select id="failed_courses" name="failed_courses" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>Sí</option>
+                  <option>No</option>
+                </select>
+
+                <label for="class_attendance">¿Asiste regularmente a clases?</label>
+                <select id="class_attendance" name="class_attendance" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>1 (Nunca)</option>
+                  <option>2 (Rara vez)</option>
+                  <option>3 (A veces)</option>
+                  <option>4 (Casi siempre)</option>
+                  <option>5 (Siempre)</option>
+                </select>
+            </fieldset>
+
+            <!-- 5. INTERÉS Y SATISFACCIÓN ACADÉMICA -->
+            <fieldset>
+                <legend>5. Interés y Satisfacción Académica</legend>
+
+                <label for="career_choice">¿Qué motivó tu elección de carrera?</label>
+                <textarea id="career_choice" name="career_choice" class="form-control" rows="3"></textarea>
+
+                <label for="career_satisfaction">Nivel de satisfacción con la carrera:</label>
+                <select id="career_satisfaction" name="career_satisfaction" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>1 (Muy insatisfecho)</option>
+                  <option>2 (Insatisfecho)</option>
+                  <option>3 (Neutral)</option>
+                  <option>4 (Satisfecho)</option>
+                  <option>5 (Muy satisfecho)</option>
+                </select>
+
+                <label for="motivation_level">¿Te sientes motivado con la carrera?</label>
+                <select id="motivation_level" name="motivation_level" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>1 (Nada motivado)</option>
+                  <option>2 (Poco motivado)</option>
+                  <option>3 (Neutral)</option>
+                  <option>4 (Motivado)</option>
+                  <option>5 (Muy motivado)</option>
+                </select>
+
+                <label for="professor_motivation">¿Los profesores te motivan?</label>
+                <select id="professor_motivation" name="professor_motivation" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>1 (Nada motivado)</option>
+                  <option>2 (Poco motivado)</option>
+                  <option>3 (Neutral)</option>
+                  <option>4 (Motivado)</option>
+                  <option>5 (Muy motivado)</option>
+                </select>
+
+                <label for="consider_dropout">En los últimos 6 meses, ¿has considerado seriamente abandonar o cambiarte de carrera?</label>
+                <select id="consider_dropout" name="consider_dropout" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>Sí</option>
+                  <option>No</option>
+                </select>
+
+                <label for="dropout_reason">Si tu respuesta es sí, descríbenos el motivo:</label>
+                <textarea id="dropout_reason" name="dropout_reason" class="form-control" rows="3"></textarea>
+            </fieldset>
+
+            <!-- 6. RECURSOS Y APOYO UNIVERSITARIO -->
+            <fieldset>
+                <legend>6. Recursos y Apoyo Universitario</legend>
+
+                <label for="transportation">Medio de transporte:</label>
+                <select id="transportation" name="transportation" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>Público</option>
+                  <option>Privado</option>
+                  <option>A pie</option>
+                </select>
+
+                <label for="commute_time">Tiempo de traslado:</label>
+                <select id="commute_time" name="commute_time" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>&lt;30 min</option>
+                  <option>30-60 min</option>
+                  <option>&gt;1 h</option>
+                </select>
+
+                <label for="internet_access">¿Acceso a internet en casa?</label>
+                <select id="internet_access" name="internet_access" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>Sí</option>
+                  <option>No</option>
+                </select>
+
+                <label for="study_space">¿Espacio adecuado para estudiar?</label>
+                <select id="study_space" name="study_space" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>Sí</option>
+                  <option>No</option>
+                </select>
+
+                <label for="library_use">¿Usa la biblioteca universitaria?</label>
+                <select id="library_use" name="library_use" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>1 (Nunca)</option>
+                  <option>2 (Rara vez)</option>
+                  <option>3 (A veces)</option>
+                  <option>4 (Frecuentemente)</option>
+                  <option>5 (Siempre)</option>
+                </select>
+
+                <label for="tutoring">¿Recibe tutoría académica?</label>
+                <select id="tutoring" name="tutoring" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>Sí</option>
+                  <option>No</option>
+                </select>
+
+                <label for="university_support">Califica el apoyo académico que recibes de tu universidad</label>
+                <select id="university_support" name="university_support" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>1 (Nulo)</option>
+                  <option>2 (Deficiente)</option>
+                  <option>3 (Regular)</option>
+                  <option>4 (Bueno)</option>
+                  <option>5 (Excelente)</option>
+                </select>
+            </fieldset>
+
+            <!-- 7. SITUACIÓN ECONÓMICA -->
+            <fieldset>
+                <legend>7. Situación Económica</legend>
+
+                <label for="housing_type">Tipo de vivienda:</label>
+                <select id="housing_type" name="housing_type" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>Propia</option>
+                  <option>Alquilada</option>
+                  <option>Alojado</option>
+                  <option>Residencia</option>
+                </select>
+
+                <label for="personal_income">Ingresos personales mensuales:</label>
+                <select id="personal_income" name="personal_income" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>0</option>
+                  <option>&lt;500</option>
+                  <option>500-1000</option>
+                  <option>&gt;1000</option>
+                </select>
+
+                <label for="family_income">Ingresos familiares mensuales:</label>
+                <select id="family_income" name="family_income" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>&lt;1000</option>
+                  <option>1000-2000</option>
+                  <option>2000-4000</option>
+                  <option>&gt;4000</option>
+                </select>
+
+                <label for="scholarship">¿Recibe algún tipo de beca?</label>
+                <select id="scholarship" name="scholarship" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>Sí</option>
+                  <option>No</option>
+                </select>
+            </fieldset>
+
+            <!-- 8. COMPROMISOS Y TIEMPO -->
+            <fieldset>
+                <legend>8. Compromisos y Tiempo</legend>
+
+                <label for="working">¿Trabaja actualmente?</label>
+                <select id="working" name="working" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>Sí</option>
+                  <option>No</option>
+                </select>
+
+                <label for="work_hours">Horas de trabajo por semana:</label>
+                <select id="work_hours" name="work_hours" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>&lt;10</option>
+                  <option>10-20</option>
+                  <option>&gt;20</option>
+                </select>
+
+                <label for="work_affects_studies">¿El trabajo afecta tus estudios?</label>
+                <select id="work_affects_studies" name="work_affects_studies" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>Sí</option>
+                  <option>No</option>
+                </select>
+
+                <label for="study_hours">Horas de estudio fuera de clases por semana:</label>
+                <select id="study_hours" name="study_hours" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>&lt;5</option>
+                  <option>5-10</option>
+                  <option>&gt;10</option>
+                </select>
+            </fieldset>
+
+            <!-- 9. FACTORES EMOCIONALES Y ESTRÉS -->
+            <fieldset>
+                <legend>9. Factores Emocionales y Estrés</legend>
+
+                <label for="discrimination">¿Has experimentado acoso, discriminación o tratos injustos dentro del entorno universitario?</label>
+                <select id="discrimination" name="discrimination" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>Sí</option>
+                  <option>No</option>
+                </select>
+
+                <label for="emotional_exhaustion">¿Te sentiste desmotivado(a) o emocionalmente agotado(a) respecto a tu carrera durante el último semestre?</label>
+                <select id="emotional_exhaustion" name="emotional_exhaustion" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>Sí</option>
+                  <option>No</option>
+                </select>
+
+                <label for="academic_stress">¿Experimentaste altos niveles de estrés académico en el último semestre?</label>
+                <select id="academic_stress" name="academic_stress" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>Sí</option>
+                  <option>No</option>
+                </select>
+
+                <label for="emotional_support">¿Cuentas con apoyo emocional, psicológico o de consejería dentro o fuera de la universidad?</label>
+                <select id="emotional_support" name="emotional_support" class="form-control">
+                  <option disabled selected>Seleccione</option>
+                  <option>Sí</option>
+                  <option>No</option>
+                </select>
+            </fieldset>
+
+            <section class="prediction-form">
+              <h2>Realizar predicción</h2>
+              <form id="predictionForm">
+                  <!-- Tus campos del formulario aquí -->
+                  <div class="form-group">
+                      <label for="student_id">ID del Estudiante:</label>
+                      <input type="number" id="student_id" name="student_id" required>
+                  </div>
+                  
+                  <button type="button" onclick="submitPrediction()" class="predict-button">Predecir</button>
+              </form>
+              <div id="predictionResult"></div>
+          </section>
+          <script src="../static/js/app.js"></script>
+      </form>
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js'></script>
+    <script src="../static/js/script.js"></script>
+
+</body>

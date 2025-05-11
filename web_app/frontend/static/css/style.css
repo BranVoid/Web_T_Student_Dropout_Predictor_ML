@@ -1,0 +1,420 @@
+/* NAVBAR */
+
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    max-width: 90rem;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #005baa;
+    font-family: "Roboto", sans-serif;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #717171;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #005baa;
+}
+
+
+/* MENÚ HAMBURGUESA */
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.hamburger .line {
+    background-color: #717171;
+    height: 4px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+
+/* Estilo del menú en pantallas pequeñas */
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #fff;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 1rem 0;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .nav-links li {
+        text-align: center;
+        padding: 1rem 0;
+    }
+    .hamburger {
+        display: flex;
+    }
+}
+
+
+/* estilo de contenido */
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Roboto:wght@300;400;500;900&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
+main {
+    position: relative;
+    width: calc(min(90rem, 90%));
+    margin: 0 auto;
+    min-height: 100vh;
+    column-gap: 3rem;
+    padding-block: min(20vh, 3rem);
+}
+
+.bg {
+    position: fixed;
+    top: -4rem;
+    left: -12rem;
+    z-index: -1;
+    opacity: 0;
+}
+
+.bg2 {
+    position: fixed;
+    bottom: -2rem;
+    right: -3rem;
+    z-index: -1;
+    width: 9.375rem;
+    opacity: 0;
+}
+
+main>div span {
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 1rem;
+    color: hwb(216 18% 80%);
+}
+
+main>div h1 {
+    text-transform: capitalize;
+    letter-spacing: 0.8px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-size: clamp(3.4375rem, 3.25rem + 0.75vw, 4rem);
+    background-color: #ffffff;
+    background-image: linear-gradient(45deg, #3034a1, #000000);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+
+main>div hr {
+    display: block;
+    background: #ffffff;
+    height: 0.25rem;
+    width: 6.25rem;
+    border: none;
+    margin: 1.125rem 0 1.875rem 0;
+}
+
+main>div p {
+    line-height: 1.6;
+}
+
+main a {
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #04148a;
+    font-weight: 500;
+    background: #181347;
+    border-radius: 3.125rem;
+    transition: 0.3s ease-in-out;
+}
+
+main>div>a {
+    border: 2px solid #c2c2c2;
+    margin-top: 2.188rem;
+    padding: 0.625rem 1.875rem;
+}
+
+main>div>a:hover {
+    border: 0.125rem solid #005baa;
+    color: #005baa;
+}
+
+.swiper {
+    width: 100%;
+    padding-top: 3.125rem;
+}
+
+.swiper-pagination-bullet,
+.swiper-pagination-bullet-active {
+    background: #fff;
+}
+
+.swiper-pagination {
+    bottom: 1.25rem !important;
+}
+
+.swiper-slide {
+    width: 18.75rem;
+    height: 28.125rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: self-start;
+}
+
+.swiper-slide h2 {
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    margin-bottom: 0.625rem;
+    padding: 0 0 0 1.563rem;
+    text-transform: uppercase;
+}
+
+.swiper-slide p {
+    color: #dadada;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    padding: 0 1.563rem;
+    line-height: 1.6;
+    font-size: 0.75rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.swiper-slide a {
+    margin: 1.25rem 1.563rem 3.438rem 1.563rem;
+    padding: 0.438em 1.875rem;
+    font-size: 0.9rem;
+}
+
+.swiper-slide a:hover {
+    color: #005baa;
+}
+
+.swiper-slide div {
+    display: none;
+    opacity: 0;
+    padding-bottom: 0.625rem;
+}
+
+.swiper-slide-active div {
+    display: block;
+    opacity: 1;
+}
+
+.swiper-slide--one {
+    background: linear-gradient(to top, #0f2027, #203a4300, #2c536400), url("https://img.freepik.com/foto-gratis/tiempo-libre-estudiantes-ritmo-vida-campus-bachillerato-cinco-estudiantes-amigables-estan-caminando_8353-6408.jpg?t=st=1745123008~exp=1745126608~hmac=6487a5f05d7fe6cba48261db47891e8fa9f206bbf9f31a417816b34058f72d34&w=1380") no-repeat 50% 50%/cover;
+}
+
+.swiper-slide--two {
+    background: linear-gradient(to top, #0f2027, #203a4300, #2c536400), url("https://img.freepik.com/foto-gratis/hombre-sentado-sala-estar-casa-hombre-triste-cansado-trabajo_1157-48733.jpg?t=st=1745123369~exp=1745126969~hmac=7f60206ef6c86716a302d2a4b142ffe2954709350ad3ecdc647c5f9a0071bd21&w=1380") no-repeat 50% 50%/cover;
+}
+
+.swiper-slide--three {
+    background: linear-gradient(to top, #0f2027, #203a4300, #2c536400), url("https://upload.wikimedia.org/wikipedia/commons/4/46/UNMSM_Facultad_de_Ingenier%C3%ADa_de_Sistemas_e_Inform%C3%A1tica_2019_-_Vista_lateral.jpg") no-repeat 50% 50%/cover;
+}
+
+.swiper-slide--four {
+    background: linear-gradient(to top, #0f2027, #203a4300, #2c536400), url("https://cdn.pixabay.com/photo/2021/08/04/13/06/software-developer-6521720_1280.jpg") no-repeat 50% 50%/cover;
+}
+
+.swiper-3d .swiper-slide-shadow-left,
+.swiper-3d .swiper-slide-shadow-right {
+    background-image: none;
+}
+
+@media screen and (min-width: 48rem) {
+    main {
+        display: flex;
+        align-items: center;
+    }
+    .bg,
+    .bg2 {
+        opacity: 0.1;
+    }
+}
+
+@media screen and (min-width: 93.75rem) {
+    .swiper {
+        width: 85%;
+    }
+}
+
+
+/* FORMULARIO MEJORADO CON FONDO ANTERIOR */
+
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    background-color: rgba(82, 183, 236, 0.8);
+    /* Fondo anterior */
+    background-position: center;
+    /* Fondo anterior */
+    color: #333;
+    /* Texto más oscuro para mejor contraste */
+    background-image: linear-gradient(115deg, rgba(58, 151, 244, 0.8), rgba(136, 177, 206, 0.7)), url(https://cdn.freecodecamp.org/testable-projects-fcc/images/survey-form-background.jpeg);
+    /* Fondo anterior */
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: rgba(27, 27, 50, 0.8);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#title {
+    text-align: center;
+    padding: 0 1rem;
+    margin-bottom: 2rem;
+    color: #eee;
+}
+
+#description {
+    text-align: center;
+    font-style: italic;
+    font-weight: 200;
+    color: #ddd;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+    margin-bottom: 1.5rem;
+}
+
+fieldset {
+    border: none;
+    padding: 1.5rem 0;
+    margin-bottom: 1.5rem;
+}
+
+fieldset:last-of-type {
+    margin-bottom: 0;
+}
+
+legend {
+    color: #eee;
+    padding: 0.5rem 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;
+}
+
+label {
+    display: block;
+    font-size: 1rem;
+    color: #ddd;
+    margin-bottom: 0.3rem;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.7rem;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.3rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    font-size: 1rem;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.input-radio,
+.input-checkbox {
+    display: inline-block;
+    margin-right: 0.5rem;
+    min-height: 1rem;
+    min-width: 1rem;
+}
+
+.clue {
+    margin-left: 0.25rem;
+    font-size: 0.9rem;
+    color: #ccc;
+    font-style: italic;
+}
+
+.input-textarea {
+    min-height: 100px;
+    width: 100%;
+    padding: 0.7rem;
+    resize: vertical;
+    border-radius: 0.3rem;
+}
+
+#submit {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background-color: #28a745;
+    color: white;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.2s ease;
+}
+
+#submit:hover {
+    background-color: #1e7e34;
+}
