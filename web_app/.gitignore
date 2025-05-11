@@ -1,0 +1,33 @@
+# Entornos virtuales
+venv/
+env/
+.venv/
+
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+
+# Archivos de entorno
+.env
+.env.local
+.secrets
+
+# Datos y modelos (si no deben subirse)
+data/
+ml_model/saved_models/
+
+# Editor/IDE
+.vscode/
+.idea/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Logs y bases de datos locales
+*.log
+*.sqlite
