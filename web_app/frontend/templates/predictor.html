@@ -158,13 +158,51 @@
                 <label for="district">Distrito de residencia:</label>
                 <select id="district" name="distrito_residencia" required class="form-control">
                   <option disabled selected value="">Seleccione su distrito</option>
+                  <option value="Lima Cercado">Lima Cercado</option>
+                  <option value="Ancón">Ancón</option>
                   <option value="Ate">Ate</option>
                   <option value="Barranco">Barranco</option>
                   <option value="Breña">Breña</option>
+                  <option value="Carabayllo">Carabayllo</option>
+                  <option value="Chaclacayo">Chaclacayo</option>
+                  <option value="Chorrillos">Chorrillos</option>
+                  <option value="Cieneguilla">Cieneguilla</option>
                   <option value="Comas">Comas</option>
-                  <!-- Agrega más distritos según sea necesario -->
+                  <option value="El Agustino">El Agustino</option>
+                  <option value="Independencia">Independencia</option>
+                  <option value="Jesús María">Jesús María</option>
+                  <option value="La Molina">La Molina</option>
+                  <option value="La Victoria">La Victoria</option>
+                  <option value="Lince">Lince</option>
+                  <option value="Los Olivos">Los Olivos</option>
+                  <option value="Lurigancho">Lurigancho</option>
+                  <option value="Lurín">Lurín</option>
+                  <option value="Magdalena del Mar">Magdalena del Mar</option>
+                  <option value="Miraflores">Miraflores</option>
+                  <option value="Pachacámac">Pachacámac</option>
+                  <option value="Pucusana">Pucusana</option>
+                  <option value="Pueblo Libre">Pueblo Libre</option>
+                  <option value="Puente Piedra">Puente Piedra</option>
+                  <option value="Punta Hermosa">Punta Hermosa</option>
+                  <option value="Punta Negra">Punta Negra</option>
+                  <option value="Rímac">Rímac</option>
+                  <option value="San Bartolo">San Bartolo</option>
+                  <option value="San Borja">San Borja</option>
+                  <option value="San Isidro">San Isidro</option>
+                  <option value="San Juan de Lurigancho">San Juan de Lurigancho</option>
+                  <option value="San Juan de Miraflores">San Juan de Miraflores</option>
+                  <option value="San Luis">San Luis</option>
+                  <option value="San Martín de Porres">San Martín de Porres</option>
+                  <option value="San Miguel">San Miguel</option>
+                  <option value="Santa Anita">Santa Anita</option>
+                  <option value="Santa María del Mar">Santa María del Mar</option>
+                  <option value="Santa Rosa">Santa Rosa</option>
+                  <option value="Santiago de Surco">Santiago de Surco</option>
+                  <option value="Surquillo">Surquillo</option>
+                  <option value="Villa El Salvador">Villa El Salvador</option>
+                  <option value="Villa María del Triunfo">Villa María del Triunfo</option>
                 </select>
-            </fieldset>
+              </fieldset>
 
             <!-- 2. CONTEXTO FAMILIAR -->
             <fieldset>
@@ -246,7 +284,6 @@
 
                 <label for="enrolled_courses">Número de cursos matriculados:</label>
                 <select id="enrolled_courses" name="cursos_matriculados" class="form-control">
-                  <option disabled selected value="">Seleccione</option>
                   <option value="3">3</option>
                   <option value="4-5">4-5</option>
                   <option value="6 o más">6 o más</option>
@@ -282,9 +319,6 @@
             <!-- 5. INTERÉS Y SATISFACCIÓN ACADÉMICA -->
             <fieldset>
                 <legend>5. Interés y Satisfacción Académica</legend>
-
-                <label for="career_choice">¿Qué motivó tu elección de carrera?</label>
-                <textarea id="career_choice" name="motivacion_carrera" class="form-control" rows="3"></textarea>
 
                 <label for="career_satisfaction">Nivel de satisfacción con la carrera:</label>
                 <select id="career_satisfaction" name="satisfaccion_carrera" class="form-control">
@@ -441,7 +475,6 @@
 
                 <label for="work_hours">Horas de trabajo por semana:</label>
                 <select id="work_hours" name="horas_trabajo" class="form-control">
-                  <option disabled selected value="">Seleccione</option>
                   <option value="<10">&lt;10</option>
                   <option value="10-20">10-20</option>
                   <option value=">20">&gt;20</option>
@@ -504,99 +537,99 @@
         </form>
     </div>
 
-    <script>
-    async function submitPrediction(event) {
+<script>
+// Funciones esenciales
+function displayError(message) {
+    const resultDiv = document.getElementById('predictionResult');
+    resultDiv.innerHTML = `
+        <div class="prediction-error">
+            <h3>🚨 Error</h3>
+            <p>${message}</p>
+            <button onclick="resetForm()" class="predict-button">Reintentar</button>
+        </div>
+    `;
+}
+
+function resetForm() {
+    document.getElementById('predictionForm').reset();
+    document.getElementById('predictionResult').innerHTML = '';
+}
+
+async function submitPrediction(event) {
     event.preventDefault();
     
-    // Validar campo de ciclo académico
-    const academicCycle = document.getElementById('academic_cycle').value;
-    if (!academicCycle || academicCycle < 1 || academicCycle > 10) {
-        displayError('Por favor ingrese un ciclo académico válido (1-10)');
+    // Validación básica
+    const requiredFields = document.querySelectorAll('[required]');
+    let missing = [];
+    requiredFields.forEach(field => {
+        if (!field.value) missing.push(field.name);
+    });
+    
+    if (missing.length > 0) {
+        displayError(`Faltan campos: ${missing.join(', ')}`);
         return;
     }
 
-    // Obtener todos los valores del formulario
-    const formElements = event.target.elements;
+    // Construir datos
     const formData = {};
-    
-    // Recoger solo los campos con valor
-    for (let element of formElements) {
-        if (element.name && element.value) {
-            formData[element.name] = element.value;
-        }
-    }
+    const formElements = event.target.elements;
+    Array.from(formElements).forEach(el => {
+        if (el.name && el.value !== "") formData[el.name] = el.value;
+    });
 
     try {
         const response = await fetch('/predict', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(formData)
         });
         
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.error || 'Error en la predicción');
-        }
+        const data = await response.json();
         
-        const result = await response.json();
-        displayPrediction(result.risk);
+        if (!response.ok) throw new Error(data.error || "Error desconocido");
         
+        showPredictionResult(data);
+
     } catch (error) {
-        displayError(error.message || 'Error al conectar con el servidor');
+        displayError(error.message);
     }
 }
 
-    function displayPrediction(risk) {
-        const resultDiv = document.getElementById('predictionResult');
-        const riskPercentage = (risk * 100).toFixed(1);
-        let riskLevel = 'bajo';
-        let riskText = 'Bajo Riesgo';
-        
-        if (risk >= 0.7) {
-            riskLevel = 'alto';
-            riskText = 'Alto Riesgo';
-        } else if (risk >= 0.4) {
-            riskLevel = 'moderado';
-            riskText = 'Riesgo Moderado';
-        }
-
-        resultDiv.innerHTML = `
-            <div class="prediction-result ${riskLevel}">
-                <h3>Resultado de la Predicción</h3>
-                <div class="risk-meter">
-                    <div class="risk-fill" style="width: ${riskPercentage}%"></div>
-                </div>
-                <p class="risk-percentage">${riskPercentage}% de probabilidad</p>
-                <p class="risk-level">${riskText}</p>
-                <p class="recommendation">Recomendación: ${getRecommendation(riskLevel)}</p>
+function showPredictionResult(data) {
+    const resultDiv = document.getElementById('predictionResult');
+    const riskPercent = (data.risk * 100).toFixed(1);
+    const riskLevel = data.risk > 0.7 ? 'alto' : data.risk > 0.4 ? 'moderado' : 'bajo';
+    
+    resultDiv.innerHTML = `
+        <div class="prediction-result ${riskLevel}">
+            <h3>Resultado de Predicción</h3>
+            <div class="risk-meter">
+                <div class="risk-fill" style="width: ${riskPercent}%"></div>
             </div>
-        `;
-    }
+            <p class="risk-percentage">${riskPercent}% de riesgo</p>
+            <p class="risk-level">Nivel: ${riskLevel.toUpperCase()}</p>
+            <button onclick="downloadReport('${btoa(data.report)}')" class="predict-button">
+                Descargar Reporte
+            </button>
+            <button onclick="resetForm()" class="predict-button">
+                Nueva Predicción
+            </button>
+        </div>
+    `;
+}
 
-    function getRecommendation(level) {
-        const recommendations = {
-            alto: "Se recomienda contactar urgentemente al departamento de bienestar estudiantil para recibir apoyo personalizado.",
-            moderado: "Sugerimos programar una sesión de asesoría académica y evaluar estrategias de mejora.",
-            bajo: "Continúa con tu buen desempeño académico. Mantén tus hábitos de estudio y bienestar."
-        };
-        return recommendations[level];
-    }
+function downloadReport(base64Report) {
+    const report = atob(base64Report);
+    const blob = new Blob([report], {type: 'text/plain'});
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `report_desertion_${Date.now()}.pdf`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
+</script>
 
-    function displayError(message) {
-        const resultDiv = document.getElementById('predictionResult');
-        resultDiv.innerHTML = `
-            <div class="prediction-error">
-                <h3>Error</h3>
-                <p>${message}</p>
-                <p>Por favor verifica los datos e intenta nuevamente</p>
-            </div>
-        `;
-    }
-    </script>
-
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js'></script>
-        <script src="../static/js/script.js"></script>
 </body>
 </html>
